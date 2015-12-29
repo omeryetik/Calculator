@@ -61,6 +61,10 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jl6-fN-GA9">
                                 <rect key="frame" x="470" y="108" width="102" height="90"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                <state key="normal" title="←"/>
+                                <connections>
+                                    <action selector="backspace" destination="BYZ-38-t0r" eventType="touchUpInside" id="dMF-mw-Eui"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UgC-eQ-bkW">
                                 <rect key="frame" x="138" y="206" width="103" height="91"/>

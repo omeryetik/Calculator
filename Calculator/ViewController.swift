@@ -20,7 +20,7 @@ class ViewController: UIViewController {
         
         let digit = sender.currentTitle!
         if userIsInTheMiddleOfTypingANumber {
-            // following if clause -> Assignment #1, Req. task #2, fp allowance
+            // following if clause -> Assignment #1, Req. task #2, fixed-point allowance
             if !(digit == "." && display.text?.rangeOfString(".") != nil) {
                 display.text = display.text! + digit
             }
@@ -28,6 +28,14 @@ class ViewController: UIViewController {
             display.text = digit
             userIsInTheMiddleOfTypingANumber = true
         }
+        // the if check is added as requested in Assignment #1, Extra Credit #2
+        if let rangeOfStringToRemove = (historyPane.text!.rangeOfString("=")) {
+            historyPane.text?.removeRange(rangeOfStringToRemove)
+        }
+        //
+        // add operation to history, Assignment #1, Req. task #4
+        historyPane.text = historyPane.text! + digit
+        //
     }
     
     @IBAction func operate(sender: UIButton) {
@@ -35,6 +43,20 @@ class ViewController: UIViewController {
         if userIsInTheMiddleOfTypingANumber {
             enter()
         }
+
+        // add operation to history, Assignment #1, Req. task #4
+        historyPane.text = historyPane.text! + operation
+        //
+        // the if check and the final "=" sign in last assignment are added as
+        // requested in Assignment #1, Extra Credit #2
+        if let rangeOfStringToRemove = (historyPane.text!.rangeOfString("=")) {
+            historyPane.text?.removeRange(rangeOfStringToRemove)
+        }
+        if operandStack.count > 0 {
+            historyPane.text = historyPane.text! + " ="
+        }
+        //
+
         switch operation {
         case "×" : performOperation { $0 * $1 }
         case "÷" : performOperation { $1 / $0 }
@@ -48,9 +70,7 @@ class ViewController: UIViewController {
         //
         default: break
         }
-        // add operation to history, Assignment #1, Req. task #4
-        historyPane.text = historyPane.text! + operation + " "
-        //
+
     }
     
     func performOperation(operation: (Double, Double) -> Double ) {
@@ -86,10 +106,8 @@ class ViewController: UIViewController {
     var operandStack = [Double]()
     
     @IBAction func enter() {
-        // add operands to history, Assignment #1, Req. task #4
-        if userIsInTheMiddleOfTypingANumber {
-            historyPane.text = historyPane.text! + display.text! + " "
-        }
+        // add operation to history, Assignment #1, Req. task #4
+        historyPane.text = historyPane.text! + " "
         //
         userIsInTheMiddleOfTypingANumber = false
         operandStack.append(displayValue)
@@ -110,7 +128,20 @@ class ViewController: UIViewController {
     @IBAction func clear() {
         displayValue = 0
         operandStack = []
-        historyPane.text = ""
+        historyPane.text = " "
     }
+    
+    // Backspace function. Assignment #1, Extra Credit #1
+    @IBAction func backspace() {
+        if userIsInTheMiddleOfTypingANumber {
+            if display.text?.characters.count > 1 {
+                display.text = String(display.text!.characters.dropLast())
+                historyPane.text! = String(historyPane.text!.characters.dropLast())
+            } else {
+                display.text = "0"
+            }
+        }
+    }
+    //
 }
 
