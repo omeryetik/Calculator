@@ -11,14 +11,19 @@ import UIKit
 class ViewController: UIViewController {
 
     @IBOutlet weak var display: UILabel!
-    
+    // outlet for history label, Assignment #1, Req. task #4
+    @IBOutlet weak var historyPane: UILabel!
+    //
     var userIsInTheMiddleOfTypingANumber: Bool = false
     
     @IBAction func appendDigit(sender: UIButton) {
         
         let digit = sender.currentTitle!
         if userIsInTheMiddleOfTypingANumber {
-            display.text = display.text! + digit
+            // following if clause -> Assignment #1, Req. task #2, fp allowance
+            if !(digit == "." && display.text?.rangeOfString(".") != nil) {
+                display.text = display.text! + digit
+            }
         } else {
             display.text = digit
             userIsInTheMiddleOfTypingANumber = true
@@ -36,8 +41,16 @@ class ViewController: UIViewController {
         case "−" : performOperation { $1 - $0 }
         case "+" : performOperation { $0 + $1 }
         case "√" : performOperation { sqrt($0) }
+        // add new operations, Assginment #1, Req. task #3
+        case "sin" : performOperation { sin($0) }
+        case "cos" : performOperation { cos($0) }
+        case "π" : performOperation(operation) { self.getValueForConstant($0)}
+        //
         default: break
         }
+        // add operation to history, Assignment #1, Req. task #4
+        historyPane.text = historyPane.text! + operation + " "
+        //
     }
     
     func performOperation(operation: (Double, Double) -> Double ) {
@@ -54,9 +67,30 @@ class ViewController: UIViewController {
         }
     }
     
+    // add new operations, Assginment #1, Req. task #3
+    @nonobjc func performOperation(constant: String, operation: (String) -> Double ) {
+        displayValue = operation(constant)
+        enter()
+    }
+    
+    func getValueForConstant (constant: String) -> Double {
+        var returnValue = 0.0
+        switch constant {
+        case "π" : returnValue = M_PI
+        default: break
+        }
+        return returnValue
+    }
+    //
+    
     var operandStack = [Double]()
     
     @IBAction func enter() {
+        // add operands to history, Assignment #1, Req. task #4
+        if userIsInTheMiddleOfTypingANumber {
+            historyPane.text = historyPane.text! + display.text! + " "
+        }
+        //
         userIsInTheMiddleOfTypingANumber = false
         operandStack.append(displayValue)
         print("operandStack = \(operandStack)")
@@ -70,6 +104,13 @@ class ViewController: UIViewController {
             display.text = "\(newValue)"
             userIsInTheMiddleOfTypingANumber = false
         }
+    }
+    
+    // Clear function. Assignment #1, Required Task #5
+    @IBAction func clear() {
+        displayValue = 0
+        operandStack = []
+        historyPane.text = ""
     }
 }
 
