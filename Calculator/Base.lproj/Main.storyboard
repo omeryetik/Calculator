@@ -49,6 +49,10 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J2H-11-4Pp">
                                 <rect key="frame" x="138" y="108" width="103" height="90"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                <state key="normal" title="±"/>
+                                <connections>
+                                    <action selector="plusMinus:" destination="BYZ-38-t0r" eventType="touchUpInside" id="niP-dc-GMa"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tfg-Mg-OvR">
                                 <rect key="frame" x="249" y="108" width="102" height="90"/>

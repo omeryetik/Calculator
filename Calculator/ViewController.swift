@@ -18,6 +18,12 @@ class ViewController: UIViewController {
     
     @IBAction func appendDigit(sender: UIButton) {
         
+        // the if check is added as requested in Assignment #1, Extra Credit #2
+        if let rangeOfStringToRemove = (historyPane.text!.rangeOfString("=")) {
+            historyPane.text?.removeRange(rangeOfStringToRemove)
+        }
+        //
+        
         let digit = sender.currentTitle!
         if userIsInTheMiddleOfTypingANumber {
             // following if clause -> Assignment #1, Req. task #2, fixed-point allowance
@@ -28,14 +34,6 @@ class ViewController: UIViewController {
             display.text = digit
             userIsInTheMiddleOfTypingANumber = true
         }
-        // the if check is added as requested in Assignment #1, Extra Credit #2
-        if let rangeOfStringToRemove = (historyPane.text!.rangeOfString("=")) {
-            historyPane.text?.removeRange(rangeOfStringToRemove)
-        }
-        //
-        // add operation to history, Assignment #1, Req. task #4
-        historyPane.text = historyPane.text! + digit
-        //
     }
     
     @IBAction func operate(sender: UIButton) {
@@ -67,6 +65,9 @@ class ViewController: UIViewController {
         case "sin" : performOperation { sin($0) }
         case "cos" : performOperation { cos($0) }
         case "π" : performOperation(operation) { self.getValueForConstant($0)}
+        //
+        // ± button, Assignment #1, Extra Credit #3
+        case "±" : performOperation { -$0 }
         //
         default: break
         }
@@ -107,7 +108,9 @@ class ViewController: UIViewController {
     
     @IBAction func enter() {
         // add operation to history, Assignment #1, Req. task #4
-        historyPane.text = historyPane.text! + " "
+        if userIsInTheMiddleOfTypingANumber {
+            historyPane.text = historyPane.text! + display.text! + " "
+        }
         //
         userIsInTheMiddleOfTypingANumber = false
         operandStack.append(displayValue)
@@ -140,6 +143,19 @@ class ViewController: UIViewController {
             } else {
                 display.text = "0"
             }
+        }
+    }
+    //
+    // ± button, Assignment #1, Extra Credit #3
+    @IBAction func plusMinus(sender: UIButton) {
+        if userIsInTheMiddleOfTypingANumber {
+            if let rangeOfStringToDrop = display.text?.rangeOfString("-") {
+                display.text?.removeRange(rangeOfStringToDrop)
+            } else {
+                display.text = "-" + display.text!
+            }
+        } else {
+            self.operate(sender)
         }
     }
     //
