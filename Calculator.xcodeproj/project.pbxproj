@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		10B7504E1C6113B200E493FF /* CalculatorBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B7504D1C6113B200E493FF /* CalculatorBrain.swift */; };
 		10B90AA31C2F4F2000EDEAA8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B90AA21C2F4F2000EDEAA8 /* AppDelegate.swift */; };
 		10B90AA51C2F4F2000EDEAA8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B90AA41C2F4F2000EDEAA8 /* ViewController.swift */; };
 		10B90AA81C2F4F2000EDEAA8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10B90AA61C2F4F2000EDEAA8 /* Main.storyboard */; };
@@ -34,6 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		10B7504D1C6113B200E493FF /* CalculatorBrain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculatorBrain.swift; sourceTree = "<group>"; };
 		10B90A9F1C2F4F2000EDEAA8 /* Calculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Calculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		10B90AA21C2F4F2000EDEAA8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		10B90AA41C2F4F2000EDEAA8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -98,6 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				10B90AA41C2F4F2000EDEAA8 /* ViewController.swift */,
+				10B7504D1C6113B200E493FF /* CalculatorBrain.swift */,
 				10B90AA61C2F4F2000EDEAA8 /* Main.storyboard */,
 				10B90AD01C2F4F3E00EDEAA8 /* Supporting Files */,
 			);
@@ -264,6 +267,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				10B7504E1C6113B200E493FF /* CalculatorBrain.swift in Sources */,
 				10B90AA51C2F4F2000EDEAA8 /* ViewController.swift in Sources */,
 				10B90AA31C2F4F2000EDEAA8 /* AppDelegate.swift in Sources */,
 			);
@@ -492,6 +496,7 @@
 				10B90AC91C2F4F2000EDEAA8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		10B90ACA1C2F4F2000EDEAA8 /* Build configuration list for PBXNativeTarget "CalculatorTests" */ = {
 			isa = XCConfigurationList;
@@ -500,6 +505,7 @@
 				10B90ACC1C2F4F2000EDEAA8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		10B90ACD1C2F4F2000EDEAA8 /* Build configuration list for PBXNativeTarget "CalculatorUITests" */ = {
 			isa = XCConfigurationList;
@@ -508,6 +514,7 @@
 				10B90ACF1C2F4F2000EDEAA8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
