@@ -113,16 +113,21 @@ class ViewController: UIViewController {
         }
         //
         userIsInTheMiddleOfTypingANumber = false
-        operandStack.append(displayValue)
+        operandStack.append(displayValue!)
         print("operandStack = \(operandStack)")
     }
     
-    var displayValue: Double {
+    var displayValue: Double? {
         get {
-            return NSNumberFormatter().numberFromString(display.text!)!.doubleValue
+            if let displayText = display.text {
+                if let displayNumber = NSNumberFormatter().numberFromString(displayText) {
+                    return displayNumber.doubleValue
+                }
+            }
+            return nil
         }
         set {
-            display.text = "\(newValue)"
+            display.text = newValue != nil ? "\(newValue!)" : "0"
             userIsInTheMiddleOfTypingANumber = false
         }
     }
