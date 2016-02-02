@@ -156,6 +156,7 @@ class ViewController: UIViewController {
             }
         } else {
             self.operate(sender)
+            userIsInTheMiddleOfTypingANumber = true
         }
     }
     //
