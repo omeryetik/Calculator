@@ -55,6 +55,9 @@ class CalculatorBrain {
         // Assignment #1, Required Task #3, adding constants like π
         learnOp(Op.Constant("π", M_PI))
         //
+        // Assignment #1, Extra Credit Task #3, +/- sign...
+        learnOp(Op.UnaryOperation("±") { -$0 })
+        //
     }
 
     private func evaluate(ops: [Op]) -> (result: Double?, remainingOps: [Op]) {

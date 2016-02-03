@@ -43,10 +43,18 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MuX-KB-pAD">
                                 <rect key="frame" x="369" y="107" width="105" height="91"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                <state key="normal" title="±"/>
+                                <connections>
+                                    <action selector="plusMinus:" destination="BYZ-38-t0r" eventType="touchUpInside" id="UzP-a7-GRP"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QyC-oa-s5d">
                                 <rect key="frame" x="482" y="107" width="106" height="91"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                <state key="normal" title="←"/>
+                                <connections>
+                                    <action selector="backSpace" destination="BYZ-38-t0r" eventType="touchUpInside" id="OZ2-ce-njE"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UgC-eQ-bkW">
                                 <rect key="frame" x="142" y="206" width="105" height="90"/>
