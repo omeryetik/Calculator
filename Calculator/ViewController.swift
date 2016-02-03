@@ -11,6 +11,8 @@ import UIKit
 class ViewController: UIViewController {
 
     @IBOutlet weak var display: UILabel!
+    // Assignment #1, Required Task #4, history label...
+    @IBOutlet weak var historyPane: UILabel!
     
     var userIsInTheMiddleOfTypingANumber: Bool = false
     
@@ -20,7 +22,10 @@ class ViewController: UIViewController {
         
         let digit = sender.currentTitle!
         if userIsInTheMiddleOfTypingANumber {
-            display.text = display.text! + digit
+            // following if clause -> Assignment #1, Req. task #2, fixed-point allowance
+            if !(digit == "." && display.text?.rangeOfString(".") != nil) {
+                display.text = display.text! + digit
+            }
         } else {
             display.text = digit
             userIsInTheMiddleOfTypingANumber = true
@@ -56,8 +61,19 @@ class ViewController: UIViewController {
         }
         set {
             display.text = "\(newValue)"
+            //Assignment #1, Required Task #4, history..
+            historyPane.text = brain.showStack()
+            //
             userIsInTheMiddleOfTypingANumber = false
         }
     }
+    
+    // Assignment #1, Required Task #5, C button...
+    @IBAction func clear() {
+        displayValue = 0
+        historyPane.text = " "
+        brain.clear()
+    }
+    //
 }
 

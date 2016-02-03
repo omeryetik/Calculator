@@ -14,6 +14,9 @@ class CalculatorBrain {
         case Operand(Double)
         case UnaryOperation(String, Double -> Double)
         case BinaryOperation(String, (Double, Double) -> Double)
+        // Assignment #1, Required Task #3, adding constants like π
+        case Constant(String, Double)
+        //
         
         var description: String {
             get {
@@ -24,6 +27,10 @@ class CalculatorBrain {
                     return symbol
                 case .BinaryOperation(let symbol, _):
                     return symbol
+                // Assignment #1, Required Task #3, adding constants like π
+                case .Constant(let symbol, _):
+                    return symbol
+                //
                 }
             }
         }
@@ -37,11 +44,17 @@ class CalculatorBrain {
         func learnOp(op: Op) {
             knownOps[op.description] = op
         }
+        
         learnOp(Op.BinaryOperation("×", *))
         learnOp(Op.BinaryOperation("÷") { $1 / $0 })
         learnOp(Op.BinaryOperation("+", +))
         learnOp(Op.BinaryOperation("−") { $1 - $0 })
         learnOp(Op.UnaryOperation("√", sqrt))
+        learnOp(Op.UnaryOperation("sin", sin))
+        learnOp(Op.UnaryOperation("cos", cos))
+        // Assignment #1, Required Task #3, adding constants like π
+        learnOp(Op.Constant("π", M_PI))
+        //
     }
 
     private func evaluate(ops: [Op]) -> (result: Double?, remainingOps: [Op]) {
@@ -64,6 +77,10 @@ class CalculatorBrain {
                         return (operation(operand1,operand2), op2Evaluation.remainingOps)
                     }
                 }
+            // Assignment #1, Required Task #3, adding constants like π
+            case .Constant(_, let value):
+                return (value, remainingOps)
+            //
             }
         }
         return (nil, ops)
@@ -86,5 +103,20 @@ class CalculatorBrain {
         }
         return evaluate()
     }
+    
+    // Assignment #1, Required Task #4, history..
+    func showStack() -> String {
+        let stackDescription = opStack.map {
+            ($0).description.stringByAppendingString(" ")
+        }
+        return stackDescription.joinWithSeparator("")
+    }
+    //
+    
+    // Assignment #1, Required Task #5, C button...
+    func clear() {
+        opStack.removeAll()
+    }
+    //
     
 }
